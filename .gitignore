@@ -1,0 +1,4 @@
+.venv
+.idea
+.DS_Store
+csv_file_creator/__pycache__/

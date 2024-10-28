@@ -12,4 +12,4 @@ The purpose of this project is to:
 ***
     
 ## How to run this app
-Run ```pip install requirements.txt```
+Run ```pip install -r requirements.txt```
