@@ -26,7 +26,7 @@ def generate_random_pid():
     Generate a random PID using random-pesel
     PID stands for Personal Identifier - name swap from PESEL
     """
-    return pesel.generate(min_age=1, max_age=120)
+    return pesel.generate(max_age=120)
 
 
 def get_current_date():
