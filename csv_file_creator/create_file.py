@@ -1,6 +1,6 @@
 import csv
 
-from information_generator import generate_person_information
+from create_fake_person import generate_person_information
 
 
 def create_and_fill_csv_file(records=20):

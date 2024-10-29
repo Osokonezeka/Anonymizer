@@ -1,6 +1,5 @@
 from datetime import datetime
 
-from extract_from_pesel import get_age
 from faker import Faker
 
 fake = Faker(["pl_PL", "en_US"])
@@ -36,14 +35,3 @@ def get_current_date():
     current_month = datetime.now().month
     current_day = datetime.now().day
     return current_year, current_month, current_day
-
-
-def generate_person_information():
-    """
-    Generates fake person based on randomly generated information
-    """
-    name = generate_random_name()
-    surname = generate_random_surname()
-    pesel = generate_random_pesel()
-    age = get_age(pesel)
-    return name, surname, pesel, age
