@@ -1,1 +1,2 @@
 faker==30.8.1
+gocept.pseudonymize==3.0
