@@ -4,7 +4,7 @@ import gocept.pseudonymize as anonymize
 from import_file import import_information_from_csv_file
 
 
-def anonymize_person_information(records=20):
+def anonymize_information_from_csv(records=20):
     row, header = import_information_from_csv_file()
     with open("../anonymized_file.csv", "w") as file:
         csv_file = csv.writer(file)
@@ -21,4 +21,4 @@ def anonymize_person_information(records=20):
 
 
 if __name__ == "__main__":
-    anonymize_person_information()
+    anonymize_information_from_csv()
