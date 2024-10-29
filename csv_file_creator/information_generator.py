@@ -1,10 +1,8 @@
 from datetime import datetime
 
 from faker import Faker
-from random_pesel import RandomPESEL
 
 fake = Faker(["pl_PL", "en_US"])
-pesel = RandomPESEL()
 
 
 def generate_random_name() -> str:
@@ -21,12 +19,12 @@ def generate_random_surname() -> str:
     return fake.last_name()
 
 
-def generate_random_pid():
+def generate_random_pesel() -> str:
     """
-    Generate a random PID using random-pesel
-    PID stands for Personal Identifier - name swap from PESEL
+    Generate a random PESEL using random-pesel
+    PESEL doesn't have an english translation -
     """
-    return pesel.generate(max_age=120)
+    return fake.pesel()
 
 
 def get_current_date():

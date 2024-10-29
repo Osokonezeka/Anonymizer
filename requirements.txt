@@ -1,2 +1,1 @@
 faker==30.8.1
-random-pesel==1.0
