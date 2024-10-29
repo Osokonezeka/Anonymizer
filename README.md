@@ -4,7 +4,7 @@
 
 ## Purpose
 The purpose of this project is to:
-* generate an ```.csv``` file filled with data ***(name, surname, PID, age)***
+* generate an ```.csv``` file filled with data ***(Name, Surname, PESEL, Age)***
 * import data from given ```.csv``` file
 * anonymize imported data
 * export anonymized data to another ```.csv``` file 
