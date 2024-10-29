@@ -35,7 +35,11 @@ def get_age(pesel):
     divided_pesel = split_pesel(pesel)
     current_year, current_month, current_day = get_current_date()
     pesel_day, pesel_month, pesel_year = get_pesel_date(divided_pesel)
-    if current_month == pesel_month and current_day < pesel_day or current_month < pesel_month:
+    if (
+        current_month == pesel_month
+        and current_day < pesel_day
+        or current_month < pesel_month
+    ):
         age = current_year - pesel_year - 1
     else:
         age = current_year - pesel_year

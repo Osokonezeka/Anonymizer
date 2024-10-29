@@ -4,3 +4,4 @@
 csv_file_creator/__pycache__/
 file_to_anonymize.csv
 anonymized_file.csv
+file_anonymizer/__pycache__/
