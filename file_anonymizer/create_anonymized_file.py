@@ -1,24 +1,12 @@
-import csv
-
-import gocept.pseudonymize as anonymize
-from import_file import import_information_from_csv_file
+from csv_file_creator.create_file import create_and_fill_csv_file
+from utils.operations_on_file import *
 
 
-def anonymize_information_from_csv(records=20):
-    row, header = import_information_from_csv_file()
-    with open("../anonymized_file.csv", "w") as file:
-        csv_file = csv.writer(file)
-        csv_file.writerow(header)
-        for x in range(records):
-            anonymized_name = anonymize.name(row[x][0], "secret")
-            anonymized_surname = anonymize.name(row[x][1], "secret")
-            anonymized_pesel = anonymize.integer(row[x][2], "secret")
-            anonymized_age = anonymize.integer(row[x][3], "secret")
-
-            csv_file.writerow(
-                [anonymized_name, anonymized_surname, anonymized_pesel, anonymized_age]
-            )
+def anonymize_information_from_csv(records):
+    create_and_fill_csv_file(records)
+    export_information_to_csv_file("anonymized_file", "anonymize", records)
+    export_information_to_csv_file("pseudoanonymized_file", "pseudoanonymize", records)
 
 
-if __name__ == "__main__":
-    anonymize_information_from_csv()
+if __name__ == '__main__':
+    anonymize_information_from_csv(records=1000)

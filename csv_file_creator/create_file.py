@@ -1,9 +1,9 @@
 import csv
 
-from create_fake_person import generate_person_information
+from csv_file_creator.create_fake_person import generate_person_information
 
 
-def create_and_fill_csv_file(records=20):
+def create_and_fill_csv_file(records):
     # Creates file in a root directory and opens it in writing mode
     with open("../file_to_anonymize.csv", "w") as file:
         csv_file = csv.writer(file)
@@ -12,7 +12,4 @@ def create_and_fill_csv_file(records=20):
         for x in range(records):
             name, surname, pesel, age = generate_person_information()
             csv_file.writerow([name, surname, pesel, age])
-
-
-if __name__ == "__main__":
-    create_and_fill_csv_file()
+        file.close()

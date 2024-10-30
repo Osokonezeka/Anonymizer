@@ -1,5 +1,5 @@
-from information_generator import *
-from extract_from_pesel import get_age
+from utils.information_generator import *
+from utils.extract_from_pesel import get_age
 
 
 def generate_person_information():
