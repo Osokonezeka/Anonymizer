@@ -42,9 +42,8 @@ pseudoanonymize = {
     "w": "k",
     "x": "f",
     "y": "8",
-    "z": "m"
+    "z": "m",
 }
-
 revert_pseudoanonymization = {
     "5": "0",
     "i": "1",
@@ -81,5 +80,5 @@ revert_pseudoanonymization = {
     "k": "w",
     "f": "x",
     "8": "y",
-    "m": "z"
+    "m": "z",
 }

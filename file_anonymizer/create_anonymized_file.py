@@ -6,7 +6,11 @@ def anonymize_information_from_csv(records):
     create_and_fill_csv_file(records)
     export_information_to_csv_file("anonymized_file", "anonymize", records)
     export_information_to_csv_file("pseudoanonymized_file", "pseudoanonymize", records)
+    export_information_to_csv_file("reverted_file", "revert", records, "pseudoanonymized_file")
 
 
-if __name__ == '__main__':
-    anonymize_information_from_csv(records=1000)
+if __name__ == "__main__":
+    anonymize_information_from_csv(records=150000)
+    # I'm only generating 150000 people because
+    # my MacBook couldn't handle more than that
+    # without dropping performance significantly
