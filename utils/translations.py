@@ -1,3 +1,11 @@
+"""
+That's just very simple (easy to break), dictionary,
+it's only use is to swap letters/numbers in string
+
+It's here just because I didn't find python package
+that allows to actually revert anonymization
+"""
+
 pseudoanonymize = {
     "0": "5",
     "1": "i",
@@ -37,7 +45,7 @@ pseudoanonymize = {
     "z": "m"
 }
 
-reverse_pseudoanonymization = {
+revert_pseudoanonymization = {
     "5": "0",
     "i": "1",
     "p": "2",

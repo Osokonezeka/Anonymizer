@@ -1,6 +1,6 @@
 from textwrap import wrap
 
-from information_generator import get_current_date
+from utils.information_generator import get_current_date
 
 
 def split_pesel(pesel):
