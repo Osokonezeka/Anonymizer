@@ -28,11 +28,11 @@ def generate_random_pesel() -> str:
     return fake.pesel()
 
 
-def generate_random_payment():
+def generate_random_payment(minimum, maximum):
     """
     Generate a random payment using random
     """
-    return random.randint(1000, 20000)
+    return random.randint(minimum, maximum)
 
 
 def get_current_date():

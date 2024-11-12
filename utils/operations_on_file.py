@@ -73,6 +73,7 @@ def split_text(data):
 
 def get_age_range(records):
     row = import_information_from_csv_file("file_to_anonymize")[0]
+    payments_15 = []
     payments_30 = []
     payments_60 = []
     payments_90 = []
@@ -81,7 +82,9 @@ def get_age_range(records):
     for x in range(records):
         age = int(row[x][3])
         payment = int(row[x][4])
-        if age <= 30:
+        if age <= 15:
+            payments_15.append(payment)
+        elif 15 < age <= 30:
             payments_30.append(payment)
         elif 30 < age <= 60:
             payments_60.append(payment)
@@ -89,29 +92,60 @@ def get_age_range(records):
             payments_90.append(payment)
         elif 90 < age <= 120:
             payments_120.append(payment)
-
-    faked_30 = get_average_pay(payments_30)
-    faked_60 = get_average_pay(payments_60)
-    faked_90 = get_average_pay(payments_90)
-    faked_120 = get_average_pay(payments_120)
-
-    return faked_30, faked_60, faked_90, faked_120
+    return payments_15, payments_30, payments_60, payments_90, payments_120
 
 
-def get_average_pay(listed):
-    average = lower(avg(listed) / 100) * 100
-    return str(average - 500) + "-" + str(average + 500)
+def get_average_pay(listed_pay):
+    """
+    This exercise doesn't allow to correctly give payment range
+    there always would be some values that are higher and some
+    that are lower than average payment of given age range
+    """
+    average = lower(avg(listed_pay) / 10) * 10
+    return str(average - 840) + "-" + str(average + 680)
 
 
 def get_faked_payment(age, records):
-    if age <= 30:
-        payment = get_age_range(records)[0]
+    payments_15, payments_30, payments_60, payments_90, payments_120 = get_age_range(records)
+    age = int(age)
+    if age <= 15:
+        payment = get_average_pay(payments_15)
+    elif 15 < age <= 30:
+        payment = get_average_pay(payments_30)
     elif 30 < age <= 60:
-        payment = get_age_range(records)[1]
+        payment = get_average_pay(payments_60)
     elif 60 < age <= 90:
-        payment = get_age_range(records)[2]
+        payment = get_average_pay(payments_90)
     elif 90 < age <= 120:
-        payment = get_age_range(records)[3]
+        payment = get_average_pay(payments_120)
     else:
         payment = ""
     return payment
+
+
+def get_min_max_pay_values(age):
+    """
+    Since there would be hardly any differences
+    between given age ranges, I'm using specific
+    ranges for payment - minimal and maximal value
+    """
+    age = int(age)
+    if age <= 15:
+        minimum = 2000
+        maximum = 4000
+    elif 15 < age <= 30:
+        minimum = 4000
+        maximum = 8000
+    elif 30 < age <= 60:
+        minimum = 8000
+        maximum = 12000
+    elif 60 < age <= 90:
+        minimum = 12000
+        maximum = 16000
+    elif 90 < age <= 120:
+        minimum = 16000
+        maximum = 20000
+    else:
+        minimum = 0
+        maximum = 1000
+    return minimum, maximum
