@@ -10,4 +10,5 @@ def generate_person_information():
     surname = generate_random_surname()
     pesel = generate_random_pesel()
     age = get_age(pesel)
-    return name, surname, pesel, age
+    payment = generate_random_payment()
+    return name, surname, pesel, age, payment

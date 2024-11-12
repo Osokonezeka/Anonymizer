@@ -1,3 +1,4 @@
+import random
 from datetime import datetime
 
 from faker import Faker
@@ -21,10 +22,17 @@ def generate_random_surname() -> str:
 
 def generate_random_pesel() -> str:
     """
-    Generate a random PESEL using random-pesel
-    PESEL doesn't have an english translation -
+    Generate a random PESEL using Faker
+    PESEL doesn't have an english translation
     """
     return fake.pesel()
+
+
+def generate_random_payment():
+    """
+    Generate a random payment using random
+    """
+    return random.randint(1000, 20000)
 
 
 def get_current_date():

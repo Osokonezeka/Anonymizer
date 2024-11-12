@@ -10,7 +10,4 @@ def anonymize_information_from_csv(records):
 
 
 if __name__ == "__main__":
-    anonymize_information_from_csv(records=150000)
-    # I'm only generating 150000 people because
-    # my laptop could not handle more than that
-    # without dropping performance significantly
+    anonymize_information_from_csv(records=10000)

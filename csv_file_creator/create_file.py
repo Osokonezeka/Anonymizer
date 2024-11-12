@@ -8,8 +8,8 @@ def create_and_fill_csv_file(records):
     with open("../file_to_anonymize.csv", "w") as file:
         csv_file = csv.writer(file)
         # Creates first row of .csv file
-        csv_file.writerow(["Name", "Surname", "PESEL", "Age"])
+        csv_file.writerow(["Name", "Surname", "PESEL", "Age", "Payment"])
         for x in range(records):
-            name, surname, pesel, age = generate_person_information()
-            csv_file.writerow([name, surname, pesel, age])
+            name, surname, pesel, age, payment = generate_person_information()
+            csv_file.writerow([name, surname, pesel, age, payment])
         file.close()
