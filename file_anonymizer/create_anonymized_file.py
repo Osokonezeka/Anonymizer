@@ -10,4 +10,4 @@ def anonymize_information_from_csv(records):
 
 
 if __name__ == "__main__":
-    anonymize_information_from_csv(records=10000)
+    anonymize_information_from_csv(records=1500)
