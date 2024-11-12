@@ -59,15 +59,11 @@ def anonymize_based_on_template(row, x, template, records):
         payment = nums[1][11 + len(age):]
         return [name, surname, pesel, age, payment]
     else:
-        raise ValueError(
-            f"There's no {template} template. Please try one of these instead:\n- anonymize\n- pseudoanonymize\n- revert"
-        )
+        raise ValueError(f"There's no {template} template. Please try one of these instead:\n- anonymize\n- pseudoanonymize\n- revert")
 
 
 def split_text(data):
-    split_on_uppercase = (
-        "".join([(" " + i if i.isupper() else i) for i in data]).strip().split()
-    )
+    split_on_uppercase = ("".join([(" " + i if i.isupper() else i) for i in data]).strip().split())
     where_to_split = split_on_uppercase[1]
     if len(split_on_uppercase) == 3:
         where_to_split = split_on_uppercase[2]
