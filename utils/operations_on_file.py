@@ -15,15 +15,15 @@ def import_information_from_csv_file(file_to_read):
 
     with open(f"../{file_to_read}.csv", "r") as file:
         reader = csv.reader(file)
-        header = next(reader)
+        next(reader)  # header need to be specified
         for rows in reader:
             row.append(rows)
-        return row, header
+        return row
 
 
 def export_information_to_csv_file(name_of_file_to_write, template, records, file_to_read="file_to_anonymize"):
-    row = import_information_from_csv_file(file_to_read)[0]
-    header = ["CODED"]if template == "pseudoanonymize"else ["Name", "Surname", "PESEL", "Age", "Payment"]
+    row = import_information_from_csv_file(file_to_read)
+    header = ["CODED"] if template == "pseudoanonymize" else ["Name", "Surname", "PESEL", "Age", "Payment"]
 
     with open(f"../{name_of_file_to_write}.csv", "w") as file:
         csv_file = csv.writer(file)
@@ -47,7 +47,7 @@ def anonymize_based_on_template(row, x, template, records):
         merged_data = ""
         for y in range(5):
             data = "".join([pseudoanonymize.get(char, char) for char in row[x][y]])
-            merged_data = merged_data + data
+            merged_data += data
         return [merged_data]
     elif template == "revert":
         data = "".join([revert.get(char, char) for char in row[x][0]])
@@ -72,7 +72,7 @@ def split_text(data):
 
 
 def get_age_range(records):
-    row = import_information_from_csv_file("file_to_anonymize")[0]
+    row = import_information_from_csv_file("file_to_anonymize")
     payments_15 = []
     payments_30 = []
     payments_60 = []
@@ -84,13 +84,13 @@ def get_age_range(records):
         payment = int(row[x][4])
         if age <= 15:
             payments_15.append(payment)
-        elif 15 < age <= 30:
+        elif age <= 30:
             payments_30.append(payment)
-        elif 30 < age <= 60:
+        elif age <= 60:
             payments_60.append(payment)
-        elif 60 < age <= 90:
+        elif age <= 90:
             payments_90.append(payment)
-        elif 90 < age <= 120:
+        elif age <= 120:
             payments_120.append(payment)
     return payments_15, payments_30, payments_60, payments_90, payments_120
 
@@ -110,13 +110,13 @@ def get_faked_payment(age, records):
     age = int(age)
     if age <= 15:
         payment = get_average_pay(payments_15)
-    elif 15 < age <= 30:
+    elif age <= 30:
         payment = get_average_pay(payments_30)
-    elif 30 < age <= 60:
+    elif age <= 60:
         payment = get_average_pay(payments_60)
-    elif 60 < age <= 90:
+    elif age <= 90:
         payment = get_average_pay(payments_90)
-    elif 90 < age <= 120:
+    elif age <= 120:
         payment = get_average_pay(payments_120)
     else:
         payment = ""
@@ -127,22 +127,22 @@ def get_min_max_pay_values(age):
     """
     Since there would be hardly any differences
     between given age ranges, I'm using specific
-    ranges for payment - minimal and maximal value
+    minimal and maximal values for payment
     """
     age = int(age)
     if age <= 15:
         minimum = 2000
         maximum = 4000
-    elif 15 < age <= 30:
+    elif age <= 30:
         minimum = 4000
         maximum = 8000
-    elif 30 < age <= 60:
+    elif age <= 60:
         minimum = 8000
         maximum = 12000
-    elif 60 < age <= 90:
+    elif age <= 90:
         minimum = 12000
         maximum = 16000
-    elif 90 < age <= 120:
+    elif age <= 120:
         minimum = 16000
         maximum = 20000
     else:
